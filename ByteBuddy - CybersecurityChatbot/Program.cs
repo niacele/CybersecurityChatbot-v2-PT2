@@ -28,38 +28,40 @@ namespace ByteBuddy___CybersecurityChatbot
 
         //dictionary for random follow-up facts
         static Dictionary<string, List<string>> randomFollowUps = new Dictionary<string, List<string>>()
-{
-    {"password safety", new List<string> {
-        "Did you know? Password managers can generate and store strong passwords for you!",
-        "Pro Tip: Changing passwords every 3 months is better than reusing old ones!",
-        "Interesting fact: The most hacked password in 2023 was '123456'!"
-    }},
-    {"phishing awareness", new List<string> {
-        "Fun fact: 96% of phishing attacks arrive by email!",
-        "Remember: Hover over links before clicking to see the real URL!",
-        "Did you know? Fake login pages often have subtle typos in the design!"
-    }},
-    {"safe browsing habits", new List<string> {
-        "Security tip: Browser extensions can see everything you do - only install trusted ones!",
-        "Did you know? Incognito mode doesn't make you anonymous to websites!",
-        "Pro fact: VPNs encrypt your traffic even on public WiFi!"
-    }},
-    {"two factor authentication", new List<string> {
-        "Cool fact: Physical security keys like YubiKey are virtually unhackable!",
-        "Remember: Authenticator apps work even without phone service!",
-        "Did you know? Apple/Google prompt-based 2FA is more secure than SMS codes!"
-    }},
-    {"social media safety", new List<string> {
-        "Alert: Geo-tagged photos can reveal your home address!",
-        "Fun fact: Scammers clone profiles using stolen photos within 2 hours!",
-        "Pro tip: Review 'Apps Connected to Account' monthly!"
-    }},
-    {"device security basics", new List<string> {
-        "Critical: iOS/Android updates often include vital security patches!",
-        "Did you know? Laptops get stolen every 53 seconds at airports!",
-        "Pro advice: Enable 'Find My Device' before you need it!"
-    }}
-};
+        {
+                {"password safety", new List<string> {
+                    "Did you know? Password managers can generate and store strong passwords for you!",
+                    "Pro Tip: Changing passwords every 3 months is better than reusing old ones!",
+                    "Interesting fact: The most hacked password in 2023 was '123456'!"
+                }},
+                {"phishing awareness", new List<string> {
+                    "Fun fact: 96% of phishing attacks arrive by email!",
+                    "Remember: Hover over links before clicking to see the real URL!",
+                    "Did you know? Fake login pages often have subtle typos in the design!"
+                }},
+                {"safe browsing habits", new List<string> {
+                    "Security tip: Browser extensions can see everything you do - only install trusted ones!",
+                    "Did you know? Incognito mode doesn't make you anonymous to websites!",
+                    "Pro fact: VPNs encrypt your traffic even on public WiFi!"
+                }},
+                {"two factor authentication", new List<string> {
+                    "Cool fact: Physical security keys like YubiKey are virtually unhackable!",
+                    "Remember: Authenticator apps work even without phone service!",
+                    "Did you know? Apple/Google prompt-based 2FA is more secure than SMS codes!"
+                }},
+                {"social media safety", new List<string> {
+                    "Alert: Geo-tagged photos can reveal your home address!",
+                    "Fun fact: Scammers clone profiles using stolen photos within 2 hours!",
+                    "Pro tip: Review 'Apps Connected to Account' monthly!"
+                }},
+                {"device security basics", new List<string> {
+                    "Critical: iOS/Android updates often include vital security patches!",
+                    "Did you know? Laptops get stolen every 53 seconds at airports!",
+                    "Pro advice: Enable 'Find My Device' before you need it!"
+                }}
+            };
+
+        //array for sentiment keywords
         static string[] sentimentKeywords = { 
             //negative sentiment
             "worried", "frustrated", "confused", "angry", "scared", "overwhelmed", "stressed", "annoyed",
@@ -68,6 +70,8 @@ namespace ByteBuddy___CybersecurityChatbot
             //neutral sentiment
             "unsure", "hesitant", "skeptical", "neutral"
         };
+
+        //array for sentiment responses
         static string[] sentimentResponses =
         {
             //negative sentiment
@@ -94,7 +98,9 @@ namespace ByteBuddy___CybersecurityChatbot
             "Hesitation is natural. Let me guide you through this...",
             "Skepticism is healthy in security. Let's verify things together...",
             "A neutral approach works—let's assess this carefully..."
-};
+        };
+
+        //array for console colours
         static ConsoleColor[] sentimentColors =
         {
                 //colour to match the negative sentiment
@@ -415,9 +421,10 @@ namespace ByteBuddy___CybersecurityChatbot
                         Console.ForegroundColor = ConsoleColor.Red;
                         TypingEffect("Please enter 'more', 'yes', or 'no'");
 
+                        //only allows user to only go through loop twice
                         if (attempts >= 2)
                         {
-                            validResponse = true; // Give up after 2 attempts
+                            validResponse = true; 
                             RespondWithSpeech("I'll assume that's a no. Let me know if you have other questions!" +
                                 "\nType 'help' to view the topic list or 'exit' to quit.");
                         }
@@ -426,11 +433,11 @@ namespace ByteBuddy___CybersecurityChatbot
             }
             else if (!foundResponse)
             {
-                // Output if topic is not recognized
+                //output if user input not recognized
                 RespondWithSpeech("Sorry, I didn't understand that. Type 'help' to view the topic list or 'exit' to quit.");
             }
 
-            // Occasionally recall memory in normal responses (10% chance)
+            //random chance of memory recall
             if (foundResponse && userMemory.ContainsKey("mainConcern") && random.Next(10) == 0)
             {
                 RespondWithSpeech($"By the way, regarding your concern about {userMemory["mainConcern"]}, " +
@@ -531,7 +538,6 @@ namespace ByteBuddy___CybersecurityChatbot
             TypingEffect(fullResponse);
             ChatHistory.Add(fullResponse);
 
-            // Remove the duplicate ChatHistory.Add() that was here
             try
             {
                 synth.Speak(response);
