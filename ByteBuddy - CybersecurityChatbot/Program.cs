@@ -72,7 +72,7 @@ namespace ByteBuddy___CybersecurityChatbot
         };
 
         //array for sentiment responses
-        static string[] sentimentResponses =
+        static string[] sentimentResponses = 
         {
             //negative sentiment
             "I understand cybersecurity can feel overwhelming. Let's tackle this step by step...",
@@ -119,7 +119,6 @@ namespace ByteBuddy___CybersecurityChatbot
         static void Main(string[] args)
 
         {
-
 
             //instance of method that plays aduio greetung
             PlayAudioGreeting("ByteBuddyGreeting.wav"); //using wav file
@@ -201,9 +200,6 @@ namespace ByteBuddy___CybersecurityChatbot
         }
 
 
-
-
-
         //method for playing audio
         static void PlayAudioGreeting(string filepath)
         {
@@ -244,7 +240,6 @@ namespace ByteBuddy___CybersecurityChatbot
                 "\n5. Social Media Safety" +
                 "\n6. Device Security Basics" +
                 "\nor type 'exit' to quit.\n");
-            //TypingEffect("Just type the topic you wanna learn more about!");
         }
 
         //method for capturing users interect (for memory recall)
@@ -275,7 +270,7 @@ namespace ByteBuddy___CybersecurityChatbot
                     string fullResponse = $"ByteBuddy: {response}";
                     Console.ForegroundColor = sentimentColors[i];
                     TypingEffect(fullResponse);
-                    ChatHistory.Add(fullResponse); // Add this line
+                    ChatHistory.Add(fullResponse);
                     Console.ResetColor();
                     synth.Speak(response);
                     break;
@@ -292,32 +287,32 @@ namespace ByteBuddy___CybersecurityChatbot
             Dictionary<string, string> responses = new Dictionary<string, string>
             {
                 {"password safety",
-                    "Passwords are your first line of defense against unauthorized access. Strong, unique passwords help protect your accounts from breaches." +
+                    "\nPasswords are your first line of defense against unauthorized access. Strong, unique passwords help protect your accounts from breaches." +
                     "\n- **Use long, random passwords**: Aim for 12+ characters with a mix of letters, numbers, and symbols (e.g., `PurpleTiger$42!Bread`)." +
                     "\n- **Try a password manager**: Tools like Bitwarden or 1Password securely store passwords and generate unique ones for every account." +
                     "\n- **Never reuse passwords**: If one account is hacked, reused passwords put *all* your accounts at risk."},
                 {"phishing awareness",
-                    "Phishing is when attackers trick you into sharing sensitive info via fake emails, texts, or websites." +
+                    "\nPhishing is when attackers trick you into sharing sensitive info via fake emails, texts, or websites." +
                     "\n- **Check sender addresses**: Look for typos or odd domains (e.g., `support@amaz0n.net` instead of `amazon.com`)." +
                     "\n- **Avoid urgent/too-good links**: Hover over links to see the URL before clicking. If unsure, go directly to the official site. " +
                     "\n- **Verify requests for info**: Banks or companies will *never* ask for passwords or payment details via email/text."},
                 {"safe browsing habits",
-                    "Safe browsing means avoiding malicious websites and downloads that can infect your devices." +
+                    "\nSafe browsing means avoiding malicious websites and downloads that can infect your devices." +
                     "\n- **Stick to HTTPS sites**: Look for the padlock icon in your browser bar—this means data is encrypted. " +
                     "\n- **Avoid shady downloads**: Only download software/apps from official sources (e.g., Apple App Store or Google Play)." +
                     "\n- **Use an ad blocker**: Reduces accidental clicks on malicious ads (e.g., uBlock Origin).  "},
                 {"two factor authentication",
-                    "2FA adds an extra layer of security by requiring a second step (like a code) to log in.  " +
+                    "\n2FA adds an extra layer of security by requiring a second step (like a code) to log in.  " +
                     "\n- **Enable 2FA on critical accounts**: Start with email, banking, and social media (use apps like Google Authenticator). " +
                     "\n- **Avoid SMS 2FA if possible**: App-based codes or security keys (e.g., YubiKey) are harder for hackers to intercept.  " +
                     "\n- **Save backup codes offline**: Store them in a secure place (not on your device!) in case you lose access.  "},
                 {"social media safety",
-                    "Oversharing or lax privacy settings on social media can expose you to scams or identity theft." +
+                    "\nOversharing or lax privacy settings on social media can expose you to scams or identity theft." +
                     "\n- **Lock down privacy settings**: Restrict posts to “Friends Only” and review tagging permissions regularly. " +
                     "\n- **Avoid sharing sensitive info**: Never post IDs, vacation plans, or answers to common security questions (e.g., pet names).  " +
                     "\n- **Be wary of quizzes/links**: “Which Disney character are you?” might harvest personal data for scams.  "},
                 {"device security basics",
-                    "Protecting your devices (phones, laptops, tablets) prevents physical theft and malware. " +
+                    "\nProtecting your devices (phones, laptops, tablets) prevents physical theft and malware. " +
                     "\n- **Update software ASAP**: Enable auto-updates for your OS and apps to patch security flaws. " +
                     "\n- **Use antivirus software**: Even free tools like Windows Defender add critical protection against malware.   " +
                     "\n- **Lock devices physically**: Always use a PIN/password, and never leave devices unattended in public.  "}
@@ -337,8 +332,6 @@ namespace ByteBuddy___CybersecurityChatbot
 
             bool foundResponse = false;
             string detectedTopic = "";
-
-
 
             //instance of sentiment method that looks for emotion/mood in user input
             DetectSentiment(input);
@@ -387,7 +380,7 @@ namespace ByteBuddy___CybersecurityChatbot
                 {
                     string morePrompt = $"ByteBuddy: Would you like to know more about {detectedTopic}? (Type 'more' or 'yes')";
                     TypingEffect(morePrompt);
-                    ChatHistory.Add(morePrompt); // Log the prompt
+                    ChatHistory.Add(morePrompt);
 
                     Console.WriteLine(username + " :");
                     string followUpInput = Console.ReadLine()?.ToLower().Trim();
@@ -554,7 +547,7 @@ namespace ByteBuddy___CybersecurityChatbot
             string[] tips = new string[]
             {
              "\nTip of the Day: Never share passwords via email or messaging - legit services will NEVER ask for them!",
-             "\nTip of the Day: Log out of accounts on shared devices - avoid remeber me on devices you don't own.",
+             "\nTip of the Day: Log out of accounts on shared devices - avoid 'remeber me' on devices you don't own.",
              "\nTip of the Day: Backup important files - use secure cloud storage or external drives.",
              "\nTip of the Day: Turn off location tags on social media - avoid revealing your home/work/school address in posts!",
              "\nTip of the Day: Review your app permissions - why does your flashlight app need access to your contacts?",

@@ -1,0 +1,18 @@
+========================================
+Conversation with Abby | 2025-05-26 17:40
+========================================
+ByteBuddy: 
+Tip of the Day: Turn off location tags on social media - avoid revealing your home/work/school address in posts!
+Abby: im confused about 2fa
+ByteBuddy: This can be confusing at first. Let me break it down...
+ByteBuddy: 
+2FA adds an extra layer of security by requiring a second step (like a code) to log in.  
+- **Enable 2FA on critical accounts**: Start with email, banking, and social media (use apps like Google Authenticator). 
+- **Avoid SMS 2FA if possible**: App-based codes or security keys (e.g., YubiKey) are harder for hackers to intercept.  
+- **Save backup codes offline**: Store them in a secure place (not on your device!) in case you lose access.  
+ByteBuddy: Would you like to know more about two factor authentication? (Type 'more' or 'yes')
+Abby: yes
+ByteBuddy: Remember: Authenticator apps work even without phone service!
+ByteBuddy: Type 'help' to view the topic list or 'exit' to quit.
+Abby: exit
+ByteBuddy: Keep pushing forward! See you next time!
